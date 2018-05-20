@@ -1,8 +1,9 @@
-/ BIBLIOTECAS
+// BIBLIOTECAS
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <math.h>
 #include <windows.h> // Libreria usada para el Sleep
 
 //MACROS
@@ -75,7 +76,7 @@ int main(void)
         break;
       default:
         printf("¡Opción no válida!¡Intente de nuevo! Presiona una tecla para continuar.\n");
-        scanf("\n");
+        getchar();
         colocar_n_espacios(resolucion);
         break; // Break no necesario, colocado unicamente por fines de código fuente
     }
@@ -607,7 +608,7 @@ void promedios_de_lluvias(void)
         }
 
       }
-    }
+ }
 //Aqui se responde el inciso D
 
     if(conta_norte>conta_centro && conta_norte>conta_sur)
@@ -617,7 +618,6 @@ void promedios_de_lluvias(void)
           printf("\n\n\tLa region con mayor lluvia mensual fue la Region Centro.");
         else
           printf("\n\n\tLa region con mayor lluvia mensual fue la Region Sur.");
-
 
 }
 
@@ -938,5 +938,80 @@ void cine(void)
 
 void datos_estadisticos(void)
 {
-  printf("DATOS ESTADISTICOS\n");
+  	int arreglo[20],i,j,cantidad_alumnos,sumacalif=0,contador_repetidos[20]={0},moda,reprobados=0,aprobados=0,aspirantes_beca=0,comparable;
+  	float media,varianza = 0,desviacion,porcentaje_reprobados,porcentaje_aprobados;
+  	do
+  	{
+    	printf("\n\n\t Ingrese el numero de alumnos que presentaron el examen: ");
+    	scanf("%d",&cantidad_alumnos);
+    	if(cantidad_alumnos < 2 || cantidad_alumnos > 20)
+    		printf("\n\n\t Solo se encuentra permitido el rango [2,20] ");
+  	}
+  	while(cantidad_alumnos < 2 || cantidad_alumnos > 20);
+
+
+  	//Ingresa las calificaciones de los alumnos
+  	for(i=0;i<cantidad_alumnos;i++)
+  	{
+  		printf("\n\n\t Ingrese la calificacion que obtuvo el alumno %d: ",i+1);
+  		scanf("%d",&arreglo[i]);
+  		sumacalif+=arreglo[i];
+  	}
+
+  	//Obtencion de la media aritmetica
+  	media=sumacalif*(1.0)/cantidad_alumnos;
+  	//Obtencion de la varianza
+  	for(i=0;i<cantidad_alumnos;i++)
+  		varianza+=pow(arreglo[i]-media,2)/cantidad_alumnos;
+  	//Obtencion de la desviación estandar
+  	desviacion=pow(varianza,0.5);
+  	//Obtencion de la moda
+  	for(j=0;j<cantidad_alumnos;j++)
+  		{
+  			for(i=0;i<cantidad_alumnos;i++)
+  			{
+  				if(arreglo[j]==arreglo[i])
+  					contador_repetidos[j]++;
+  			}
+  		}
+  	comparable=0;
+  	for(i=0;i<cantidad_alumnos;i++)
+  		if(contador_repetidos[i]>comparable)
+  		{
+  			comparable=contador_repetidos[i];
+  			moda=arreglo[i];
+  		}
+  	//Obtencion del numero de alumnos aprobados y reprobados
+  	for(i=0;i<cantidad_alumnos;i++)
+  		{
+  			if(arreglo[i]<6)
+  			reprobados++;
+  			else
+  			aprobados++;
+  		}
+  	//Obtencion del porcentaje de alumnos aprobados y reprobados
+  	porcentaje_aprobados=aprobados*(100.0)/cantidad_alumnos;
+  	porcentaje_reprobados=reprobados*(100.0)/cantidad_alumnos;
+  	//Obtencion del numero de aspirantes a beca
+  	printf("\n\n\t El arreglo ingresado es: \n");
+  	for(i=0;i<cantidad_alumnos;i++)
+  	{
+  		printf("   %d",arreglo[i]);
+  		if(arreglo[i]>8)
+  		aspirantes_beca++;
+  	}
+  	//Finalmente, la impresion de los valores
+  	printf("\n\n\t La media aritmetica es %.3f",media);
+  	printf("\n\n\t La varianza es %.3f",varianza);
+  	printf("\n\n\t La desviacion estandar es %.3f",desviacion);
+  	if(comparable>1)
+  	 printf("\n\n\t La moda es %d",moda);
+  	else
+  	 printf("\n\n\t Ninguna calificacion se repite, no hay moda");
+  	printf("\n\n\t La cantidad de alumnos aprobados es %d, la de reprobados es %d",aprobados,reprobados);
+  	printf("\n\n\t Porcentaje de alumnos aprobados= %.3f, de alumnos reprobados= %.3f",porcentaje_aprobados,porcentaje_reprobados);
+  	printf("\n\n\t La cantidad de alumnos que aspiran a una beca es %d",aspirantes_beca);
+
+    printf("\n\n\t Presione una tecla para continuar.");
+    getchar();
 }
