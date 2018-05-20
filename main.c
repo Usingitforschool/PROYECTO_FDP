@@ -692,7 +692,7 @@ void cine(void)
 
         for(;;) // Ciclo para el menu de la sala convencional
         {
-          if(boletos_vendidos_2D < cine_filas_asientos*cine_columnas_asientos)
+          if(boletos_vendidos_2D < cine_filas_asientos*cine_columnas_asientos) // Revisa si la sala no esta llena 
           {
             colocar_n_espacios(resolucion);
             printf("Esta es la sala de cine convencional:\n");
@@ -797,9 +797,9 @@ void cine(void)
         break;
       case 2:
 
-        for(;;) // Ciclo para el menu de la sala convencional
+        for(;;) // Ciclo para el menu de la sala 3D
         {
-          if(boletos_vendidos_3D < cine_filas_asientos*cine_columnas_asientos)
+          if(boletos_vendidos_3D < cine_filas_asientos*cine_columnas_asientos) // Revisa si la sala no esta llena
           {
             colocar_n_espacios(resolucion);
             printf("Esta es la sala de cine 3D:\n");
@@ -902,7 +902,7 @@ void cine(void)
         }
 
         break;
-      case 3:
+      case 3: // Impresión de las estadísticas de las salas
         colocar_n_espacios(resolucion);
         printf("Estos son los datos de la sala convencional:\n");
           printf("\tBoletos vendidos: %d\n", boletos_vendidos_2D);
