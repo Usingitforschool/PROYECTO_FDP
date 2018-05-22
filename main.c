@@ -1,13 +1,29 @@
+/*/////////////////////////////////////////////
+
+  REQUIERE C99
+  REQUIERE C99
+  REQUIERE C99
+  REQUIERE C99
+  REQUIERE C99
+  REQUIERE C99
+  REQUIERE C99
+  REQUIERE C99
+  REQUIERE C99
+  REQUIERE C99
+  REQUIERE C99
+
+////////////////////////////////////////////////*/
+
 // BIBLIOTECAS
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <math.h>
-#include <windows.h> // Libreria usada para el Sleep
+#include <windows.h>                                                            // Libreria usada para el Sleep ELIMINAR SI SE USA EN LINUX. SUSTINUIR "Sleep(3000);" por "sleep(3);"
 
 //MACROS
-#define resolucion 36 // Define la cantdad de espacio que define un "Limpiado de pantalla"
+#define resolucion 36                                                           // Define la cantdad de espacio que define un "Limpiado de pantalla"
 
   // MACROS PARA FUNCIÓN "CINE"
     #define cine_filas_asientos 4
@@ -20,9 +36,15 @@ void datos_estadisticos(void);
 
 
 // Definiciones de funciones miscelaneas
-void limpiar_buffer(void);
-void colocar_n_espacios(unsigned int numero_espacios);
-bool verificar_si_entero_esta_en_rango(int numero_a_verificar, int rango_inferior, int rango_superior);
+
+  // FUNCIÓN DISEÑADA PARA LIMPIAR EL BUFFER DE STDIN
+  void limpiar_buffer(void);
+
+  // FUNCIÓN DISEÑADA QUE COLOCA UN NUMERO "N" DE ESPACIOS ESPECIFICADO POR EL NUMERO ESPACIO INTRODUCIDO
+  void colocar_n_espacios(unsigned int numero_espacios);
+
+  // VERIFICA SI EL INTERO ESTA EN RANGO
+  bool verificar_si_entero_esta_en_rango(int numero_a_verificar, int rango_inferior, int rango_superior);
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -35,9 +57,9 @@ int main(void)
   int decision;
   bool se_limpia_buffer = 0;
 
-  for(;;) // CICLO "INFINITO" PARA REPETIR VARIAS VECES EL MENÚ
+  for(;;)                                                                        // CICLO "INFINITO" PARA REPETIR VARIAS VECES EL MENÚ
   {
-    if(se_limpia_buffer)
+    if(se_limpia_buffer)                                                        // limpia el buffer solo una vez
       {
         limpiar_buffer();
         colocar_n_espacios(resolucion);
@@ -78,19 +100,25 @@ int main(void)
         printf("¡Opción no válida!¡Intente de nuevo! Presiona una tecla para continuar.\n");
         getchar();
         colocar_n_espacios(resolucion);
-        break; // Break no necesario, colocado unicamente por fines de código fuente
+        break;                                                                  // Break no necesario, colocado unicamente por fines de código fuente (Se sigue una convecion similar en todo el programa)
     }
   }
 
-  terminar_programa: // Bandera para terminar programa
+  terminar_programa:                                                            // Bandera para terminar programa
 
-  return 0;
+  return 0;                                                                     // Fin del programa
 }
 
 
 ///////////////////////////////////////////////////////////////////////////////
 //                           FIN FUNCIÓN "MAIN"                              //
 ///////////////////////////////////////////////////////////////////////////////
+
+
+
+//////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////
+
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -622,26 +650,37 @@ void promedios_de_lluvias(void)
 }
 
 
+
+
+
+
+
 void cine(void)
 {
+
+  /////////////////////// INICIO DE DECLARACIONES /////////////////////////////
+
+
   // Ya se escriben los espacios en la funcion main();
   // HEADER
+
   printf("CINE\n");
 
   //Declaración de variables generales:
-
   int menu_3D_o_2D;
   bool se_limpia_buffer = 0;
-  int fila_deseada, adulto_o_nino, columna_deseada_int = -1; // Columna deseada int se marca para indicar que no fue encontrada la columna
+  int fila_deseada, adulto_o_nino, columna_deseada_int = -1;                    // Columna deseada int se marca para indicar que no fue encontrada la columna
   char columna_deseada_char;
 
 
   int confirmacion, comprar_boleto;
 
   // Las dos salas tienen la misma cantidad de columnas y comparten la misma etiqueta
+
+
   char sala_etiqueta_columnas[cine_columnas_asientos] =
-      {'A','B','C','D'};
-      // Es necesario modifica en caso de más filas y columnas
+      {'A','B','C','D'};                                                          // Es necesario modifica en caso de más filas y columnas
+
 
   // Variables para sala convencional
   int boletos_vendidos_2D = 0, boletos_vendidos_2D_adultos = 0,
@@ -658,21 +697,25 @@ void cine(void)
   boletos_vendidos_3D_infantes = 0 ;
   float boletos_vendidos_3D_subtotal = 0;
 
-  // Arreglo de la sala 3D
-  int  sala_3D[cine_filas_asientos][cine_columnas_asientos] = {0};
+    // Arreglo de la sala 3D
+    int  sala_3D[cine_filas_asientos][cine_columnas_asientos] = {0};
+
+  ////////////////////////// FIN  DE DECLARACIONES /////////////////////////////
 
 
-
-  //MENU
-  for(;;)
+  for(;;)                                                                        // CICLO INFINITO PARA EL MENU GENERAL
   {
-    if(se_limpia_buffer)
+
+
+    if(se_limpia_buffer)                                                        //No limpia la primera vez el buffer, el resto sí. Los primeros espacio son colocados por main()
       {
         limpiar_buffer();
         colocar_n_espacios(resolucion);
       }
     else
       se_limpia_buffer = true;
+
+    ////////////////// IMPRESION DEL MENU //////////////////////////////////////
 
     printf("\t\t¡Hola! Bienvenido al Cine. Elige una opción:\n");
 
@@ -682,18 +725,29 @@ void cine(void)
            "\t\t\t 0. Salir al menú de programas\n"
         "\n\t\t\tIntroduce tu elección: "
       );
-    scanf("%d", &menu_3D_o_2D);
 
-    switch (menu_3D_o_2D)
+    ////////////////// FIN DE IMPRESIÓN DE MENÚ ////////////////////////////////
+
+
+
+    scanf("%d", &menu_3D_o_2D);                                                 // Este scanf se "traga" el caracter de linea nueva residuo de la elección del programa. Lee la decision del usuario.
+
+    switch (menu_3D_o_2D)                                                       // Este switch permite determinar que menú se muestra. Se ecuentra dentro de un for infinito
     {
       case 0:
-        return;
+        return;                                                                 // Caso en donde el usuario quiere regresar al menu de programas
+
+
       case 1:
 
-        for(;;) // Ciclo para el menu de la sala convencional
+        for(;;)                                                                 // Ciclo for infinito para el menu de la sala convencional
         {
-          if(boletos_vendidos_2D < cine_filas_asientos*cine_columnas_asientos) // Revisa si la sala no esta llena 
+          if(boletos_vendidos_2D < cine_filas_asientos*cine_columnas_asientos)  // Revisa si la sala no esta llena si esta llena, coloca espacio (limpia pantalla),
+                                                                                // menciona que la sala ya esta llena y rompe el ciclo del menu de la sala con break;
           {
+
+            //////////////////// IMPRESION DE LA SALA //////////////////////////
+
             colocar_n_espacios(resolucion);
             printf("Esta es la sala de cine convencional:\n");
             colocar_n_espacios(10);
@@ -701,19 +755,23 @@ void cine(void)
 
             printf("\t\t\t");
 
-            for (int i = 0; i < cine_columnas_asientos; i++) //Imprime eiquetas
+            for (int i = 0; i < cine_columnas_asientos; i++)                    //Imprime eiquetas
               printf("\t%c", sala_etiqueta_columnas[i]);
 
             printf("\n");
 
-            for (int i = 0; i < cine_filas_asientos; i++) // Imprime las filas
+            for (int i = 0; i < cine_filas_asientos; i++)                       // Imprime las filas
             {
               printf("\t\t\t");
               printf("%d", i+1);
-              for (int j= 0; j < cine_columnas_asientos; j++)
+              for (int j= 0; j < cine_columnas_asientos; j++)                   // Imprime columnas
                 printf("\t%d", sala_2D[i][j]);
               printf("\n");
             }
+
+            ///////////////// FIN IMPRESION DE LA SALA /////////////////////////
+
+
 
             colocar_n_espacios(5);
 
@@ -732,15 +790,20 @@ void cine(void)
               printf("El asiento que selecciono es %c%d. ¿Es correcto? (1 = Si, 2=No): ", columna_deseada_char, fila_deseada);
                 scanf("%d", &confirmacion);
 
-                if(confirmacion == 1)
+                if(confirmacion == 1)                                           // boleto confirmado!
                   {
-                    for(int t = 0; t < cine_columnas_asientos; t++)
+
+                    columna_deseada_int = -1;                                   // Permite determinar si el caracter de columna es correcto (se encuentra en las etiquetas)
+                    for(int t = 0; t < cine_columnas_asientos; t++)             // Le asigna un numero al caracter de la columna
                       if(columna_deseada_char == sala_etiqueta_columnas[t])
                         columna_deseada_int = t+1;
 
-                    if(verificar_si_entero_esta_en_rango(fila_deseada, 1, cine_filas_asientos) && verificar_si_entero_esta_en_rango(columna_deseada_int, 1, cine_columnas_asientos))  // Verifica si el asiento se ecuentra en rango
+
+                    if(verificar_si_entero_esta_en_rango(fila_deseada, 1, cine_filas_asientos) &&
+                       verificar_si_entero_esta_en_rango(columna_deseada_int, 1, cine_columnas_asientos))  // Verifica si el asiento se ecuentra en rango
+
                     {
-                      if(sala_2D[fila_deseada-1][columna_deseada_int-1] == 0)
+                      if(sala_2D[fila_deseada-1][columna_deseada_int-1] == 0)   // Verifica si el aciento esta disponible, notese los menos 1
                         {
                         printf("¡Este asiento esta disponible!\n");
                         printf("¿Desea un boleto para adulto ($50) o para niño ($30)? (1 = Adulto, 2 = Niño): ");
@@ -766,41 +829,46 @@ void cine(void)
                           {
                             printf("OPCION NO VÁLIDA\n");
                             Sleep(3000);
-                            continue;
+                            continue;                                           // Regresa al menu de la sala
                           }
 
                         }
-                      else
+                      else                                                      // Lo que pasa si el aciento no esta disponible
                       {
                         printf("Este asiento no esta disponieble ingrese otro\n");
                         Sleep(3000);
-                        continue;
+                        continue;                                               // Regresa al menu de la sala
                       }
                     }
                   }
-                else
-                  continue;
+                else                                                            // Si el boleto no se confirma,
+                  continue;                                                     // Se regresa al inicio del ciclo del menu de la sala convencional
             }
-            else
-              break;
+            else                                                                // Lo que sucede si el boleto no esta confirmado
+              break;                                                            // Regresa al menu de la sala
           }
+
           else
           {
               colocar_n_espacios(resolucion);
               colocar_n_espacios(10);
-              printf("\t\t\t¡La sala ya esta llena!\n");
-              Sleep(3000);
-              break;
+              printf("\t\t\t¡La sala ya esta llena!\n");                        // !!!!!!!!!!!!!! ANTENCIÓN !!!!!!!!!!!!!!! (La sigueinte inst. posible incopatibilidad entre Windows y otros OS)
+              Sleep(3000);                                                      // Espera 3 segundos. !!!!!!!!!!!!!!!!! REMPLAZAR POR "sleep(3);" si se usa un sistema con POSIX !!!!!!!!!!!
+              break;                                                            // Termina el ciclo for infinito de la sala convencional
             }
         }
 
-        break;
+        break;                                                                  // Termina el caso '1' (Sala convencional)
       case 2:
 
-        for(;;) // Ciclo para el menu de la sala 3D
+        for(;;)                                                                 // Ciclo for infinito para el menu de la sala 3D
         {
-          if(boletos_vendidos_3D < cine_filas_asientos*cine_columnas_asientos) // Revisa si la sala no esta llena
+          if(boletos_vendidos_3D < cine_filas_asientos*cine_columnas_asientos)  // Revisa si la sala no esta llena si esta llena, coloca espacio (limpia pantalla),
+                                                                                // menciona que la sala ya esta llena y rompe el ciclo del menu de la sala con break;
           {
+
+            //////////////////// IMPRESION DE LA SALA //////////////////////////
+
             colocar_n_espacios(resolucion);
             printf("Esta es la sala de cine 3D:\n");
             colocar_n_espacios(10);
@@ -822,6 +890,8 @@ void cine(void)
               printf("\n");
             }
 
+            ///////////////// FIN IMPRESION DE LA SALA /////////////////////////
+
             colocar_n_espacios(5);
 
             printf("¿Desea comprar un asiento o regresar al menú? (1 = Comprar boleto, 2 = Regresar): ");
@@ -839,15 +909,17 @@ void cine(void)
               printf("El asiento que selecciono es %c%d. ¿Es correcto? (1 = Si, 2=No): ", columna_deseada_char, fila_deseada);
                 scanf("%d", &confirmacion);
 
-                if(confirmacion == 1)
+                if(confirmacion == 1)                                           // boleto confirmado!
                   {
-                    for(int t = 0; t < cine_columnas_asientos; t++) // Le asigna un numero al caracter de la columna
+                    columna_deseada_int = -1;                                   // Permite determinar si el caracter de columna es correcto (se encuentra en las etiquetas)
+                    for(int t = 0; t < cine_columnas_asientos; t++)             // Le asigna un numero al caracter de la columna
                       if(columna_deseada_char == sala_etiqueta_columnas[t])
                         columna_deseada_int = t+1;
 
-                    if(verificar_si_entero_esta_en_rango(fila_deseada, 1, cine_filas_asientos) && verificar_si_entero_esta_en_rango(columna_deseada_int, 1, cine_columnas_asientos))  // Verifica si el asiento se ecuentra en rango
+                    if(verificar_si_entero_esta_en_rango(fila_deseada, 1, cine_filas_asientos) &&
+                       verificar_si_entero_esta_en_rango(columna_deseada_int, 1, cine_columnas_asientos))  // Verifica si el asiento se ecuentra en rango
                     {
-                      if(sala_3D[fila_deseada-1][columna_deseada_int-1] == 0)
+                      if(sala_3D[fila_deseada-1][columna_deseada_int-1] == 0)   // Verifica si el aciento esta disponible, notese los menos 1
                         {
                         printf("¡Este asiento esta disponible!\n");
                         printf("¿Desea un boleto para adulto ($100) o para niño ($60)? (1 = Adulto, 2 = Niño): ");
@@ -873,36 +945,39 @@ void cine(void)
                           {
                             printf("OPCION NO VÁLIDA\n");
                             Sleep(3000);
-                            continue;
+                            continue;                                           // Regresa al menu de la sala
                           }
 
                         }
-                      else
+                      else                                                      // Lo que pasa si el aciento no esta disponible
                       {
                         printf("Este asiento no esta disponieble ingrese otro\n");
                         Sleep(3000);
-                        continue;
+                        continue;                                               // Regresa al menu de la sala
                       }
                     }
                   }
-                else
-                  continue;
+                else                                                            // Si el boleto no se confirma,
+                  continue;                                                     // Se regresa al inicio del ciclo del menu de la sala 3D
             }
-            else
-              break;
+            else                                                                // Lo que sucede si el boleto no esta confirmado
+              break;                                                            // Regresa al menu de la sala
           }
           else
           {
               colocar_n_espacios(resolucion);
               colocar_n_espacios(10);
-              printf("\t\t\t¡La sala ya esta llena!\n");
-              Sleep(3000);
-              break;
+              printf("\t\t\t¡La sala ya esta llena!\n");                        // !!!!!!!!!!!!!! ANTENCIÓN !!!!!!!!!!!!!!! (La sigueinte inst. posible incopatibilidad entre Windows y otros OS)
+              Sleep(3000);                                                      // Espera 3 segundos. !!!!!!!!!!!!!!!!! REMPLAZAR POR "sleep(3);" si se usa un sistema con POSIX !!!!!!!!!!!
+              break;                                                            // Termina el ciclo for infinito de la sala 3D
             }
-        }
+        }                                                                       // Termina el caso '2' (Sala 3D)
 
         break;
-      case 3: // Impresión de las estadísticas de las salas
+
+
+
+      case 3:                                                                    // Impresión de las estadísticas de las salas
         colocar_n_espacios(resolucion);
         printf("Estos son los datos de la sala convencional:\n");
           printf("\tBoletos vendidos: %d\n", boletos_vendidos_2D);
@@ -919,15 +994,16 @@ void cine(void)
 
         printf("Presiona cualquier tecla para continuar: \n");
 
-        if(!feof(stdin))
-          getchar();
+        if(!feof(stdin))                                                        //Si en el buffer de stdin hay no algo
+          getchar();                                                            // Espera que el usuario presione una tecla
         else
-          limpiar_buffer();
+          limpiar_buffer();                                                     //De otra forma borra el buffer
+
 
 
         break;
       default:
-        printf("¡Opción no válida!Intente de nuevo. Presiona una tecla para continuar.\n");
+        printf("¡Opción no válida!Intente de nuevo. Presiona una tecla para continuar.\n"); // Lo que sucede si no pones una opción valida
         break;
     }
   }
