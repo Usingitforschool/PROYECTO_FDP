@@ -23,8 +23,7 @@
 #include <windows.h>                                                            // Libreria usada para el Sleep ELIMINAR SI SE USA EN LINUX. SUSTINUIR "Sleep(3000);" por "sleep(3);"
 
 //MACROS
-#define resolucion 36                                                           // Define la cantdad de espacio que define un "Limpiado de pantalla"
-
+#define resolucion 36                                                           // Define la cantdad de espacio que define un "Limpiado de pantalla 
   // MACROS PARA FUNCIÓN "CINE"
     #define cine_filas_asientos 4
     #define cine_columnas_asientos 4
@@ -158,494 +157,269 @@ bool verificar_si_entero_esta_en_rango(int numero_a_verificar, int rango_inferio
 
 void promedios_de_lluvias(void)
 {
-  float norte[4][7], centro[4][7], sur[4][7], prom_centro, conta_centro=0, conta_norte=0, conta_sur=0, semana1sur=0, semana1norte=0, semana2sur=0, semana2norte=0, semana3sur=0, semana3norte=0, semana4sur=0, semana4norte=0;
-  int i, j;
-
-  printf("\n\n\tCentro Metereologico Nacional\n\tIngrese los registros de lluvias solicitados.");
-    for(i=0; i<4; i++)
-    {
-      for(j=0; j<7; j++)
-      {
-        if(j==0)
-        {
-          printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Norte el dia Lunes: ", i+1);
-          scanf("%f", &norte[i][j]);
-          conta_norte+=norte[i][j];
-          printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Centro el dia Lunes: ", i+1);
-          scanf("%f", &centro[i][j]);
-          conta_centro+=centro[i][j];
-          printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Sur el dia Lunes: ", i+1);
-          scanf("%f", &sur[i][j]);
-          conta_sur+=sur[i][j];
-        }
-        else
-        {
-          if(j==1)
-          {
-            printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Norte el dia Martes: ", i+1);
-            scanf("%f", &norte[i][j]);
-            conta_norte+=norte[i][j];
-            printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Centro el dia Martes: ", i+1);
-            scanf("%f", &centro[i][j]);
-            conta_centro+=centro[i][j];
-            printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Sur el dia Martes: ", i+1);
-            scanf("%f", &sur[i][j]);
-            conta_sur+=sur[i][j];
-          }
-          else
-          {
-            if(j==2)
-            {
-              printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Norte el dia Miercoles: ", i+1);
-              scanf("%f", &norte[i][j]);
-              conta_norte+=norte[i][j];
-              printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Centro el dia Miercoles: ", i+1);
-              scanf("%f", &centro[i][j]);
-              conta_centro+=centro[i][j];
-              printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion sur el dia Miercoles: ", i+1);
-              scanf("%f", &sur[i][j]);
-              conta_sur+=sur[i][j];
-            }
-            else
-            {
-              if(j==3)
-              {
-                printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Norte el dia Jueves: ", i+1);
-                scanf("%f", &norte[i][j]);
-                conta_norte+=norte[i][j];
-                printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Centro el dia Jueves: ", i+1);
-                scanf("%f", &centro[i][j]);
-                conta_centro+=centro[i][j];
-                printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Sur el dia Jueves: ", i+1);
-                scanf("%f", &sur[i][j]);
-                conta_sur+=sur[i][j];
-              }
-              else
-              {
-                if(j==4)
-                {
-                  printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Norte el dia Viernes: ", i+1);
-                  scanf("%f", &norte[i][j]);
-                  conta_norte+=norte[i][j];
-                  printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Centro el dia Viernes: ", i+1);
-                  scanf("%f", &centro[i][j]);
-                  conta_centro+=centro[i][j];
-                  printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Sur el dia Viernes: ", i+1);
-                  scanf("%f", &sur[i][j]);
-                  conta_sur+=sur[i][j];
-                }
-                else
-                {
-                  if(j==5)
-                  {
-                    printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Norte el dia Sabado: ", i+1);
-                    scanf("%f", &norte[i][j]);
-                    conta_norte+=norte[i][j];
-                    printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Centro el dia Sabado: ", i+1);
-                    scanf("%f", &centro[i][j]);
-                    conta_centro+=centro[i][j];
-                    printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Sur el dia Sabado: ", i+1);
-                    scanf("%f", &sur[i][j]);
-                    conta_sur+=sur[i][j];
-                  }
-                  else
-                  {
-                    printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Norte el dia Domingo: ", i+1);
-                    scanf("%f", &norte[i][j]);
-                    conta_norte+=norte[i][j];
-                    printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Centro el dia Domingo: ", i+1);
-                    scanf("%f", &centro[i][j]);
-                    conta_centro+=centro[i][j];
-                    printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Sur el dia Domingo: ", i+1);
-                    scanf("%f", &sur[i][j]);
-                    conta_sur+=sur[i][j];
-                  }
-
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+  float norte[4][7], centro[4][7], sur[4][7], registro_sur[4]={0}, registro_norte[4]={0}, prom_centro, conta_centro=0, conta_norte=0, conta_sur=0, comparador_sur=0, comparador_norte=0; 
+	int i, j, k, renglon_menor_registro_sur, renglon_mayor_registro_norte;
+	
+	printf("\n\n\tCentro Metereologico Nacional\n\tIngrese los registros de lluvias solicitados.");
+		for(i=0; i<4; i++)
+		{
+			for(j=0; j<7; j++)
+			{
+				if(j==0)
+				{
+					printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Norte el dia Lunes: ", i+1);
+					scanf("%f", &norte[i][j]);
+					conta_norte+=norte[i][j];
+					printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Centro el dia Lunes: ", i+1);
+					scanf("%f", &centro[i][j]);
+					conta_centro+=centro[i][j];
+					printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Sur el dia Lunes: ", i+1);
+					scanf("%f", &sur[i][j]);
+					conta_sur+=sur[i][j];
+				}
+				else
+				{
+					if(j==1)
+					{
+						printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Norte el dia Martes: ", i+1);
+						scanf("%f", &norte[i][j]);
+						conta_norte+=norte[i][j];
+						printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Centro el dia Martes: ", i+1);
+						scanf("%f", &centro[i][j]);
+						conta_centro+=centro[i][j];
+						printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Sur el dia Martes: ", i+1);
+						scanf("%f", &sur[i][j]);
+						conta_sur+=sur[i][j];
+					}
+					else
+					{
+						if(j==2)
+						{
+							printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Norte el dia Miercoles: ", i+1);
+							scanf("%f", &norte[i][j]);
+							conta_norte+=norte[i][j];
+							printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Centro el dia Miercoles: ", i+1);
+							scanf("%f", &centro[i][j]);
+							conta_centro+=centro[i][j];
+							printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion sur el dia Miercoles: ", i+1);
+							scanf("%f", &sur[i][j]);
+							conta_sur+=sur[i][j];
+						}
+						else
+						{
+							if(j==3)
+							{
+								printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Norte el dia Jueves: ", i+1);
+								scanf("%f", &norte[i][j]);
+								conta_norte+=norte[i][j];
+								printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Centro el dia Jueves: ", i+1);
+								scanf("%f", &centro[i][j]);
+								conta_centro+=centro[i][j];
+								printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Sur el dia Jueves: ", i+1);
+								scanf("%f", &sur[i][j]);
+								conta_sur+=sur[i][j];
+							}
+							else
+							{
+								if(j==4)
+								{
+									printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Norte el dia Viernes: ", i+1);
+									scanf("%f", &norte[i][j]);
+									conta_norte+=norte[i][j];
+									printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Centro el dia Viernes: ", i+1);
+									scanf("%f", &centro[i][j]);
+									conta_centro+=centro[i][j];
+									printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Sur el dia Viernes: ", i+1);
+									scanf("%f", &sur[i][j]);
+									conta_sur+=sur[i][j];
+								}
+								else
+								{
+									if(j==5)
+									{
+										printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Norte el dia Sabado: ", i+1);
+										scanf("%f", &norte[i][j]);
+										conta_norte+=norte[i][j];
+										printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Centro el dia Sabado: ", i+1);
+										scanf("%f", &centro[i][j]);
+										conta_centro+=centro[i][j];
+										printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Sur el dia Sabado: ", i+1);
+										scanf("%f", &sur[i][j]);
+										conta_sur+=sur[i][j];
+									}
+									else
+									{																								
+										printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Norte el dia Domingo: ", i+1);
+										scanf("%f", &norte[i][j]);
+										conta_norte+=norte[i][j];
+										printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Centro el dia Domingo: ", i+1);
+										scanf("%f", &centro[i][j]);
+										conta_centro+=centro[i][j];
+										printf("\n\n\tPara la semana %d ingrese la cantidad de lluvia caida en la\n\tRegion Sur el dia Domingo: ", i+1);
+										scanf("%f", &sur[i][j]);
+										conta_sur+=sur[i][j];
+									}
+									
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 //Aqui se respondera el inciso A
-  prom_centro=conta_centro/28;
-  printf("\n\n\tEl promedio mensual de lluvias la Region Centro fue de: %.2f", prom_centro);
+	prom_centro=conta_centro/28;
+	printf("\n\n\tEl promedio mensual de lluvias de la Region Centro fue de: %.2f", prom_centro);
+	
+//Aqui se responde el inciso B.
+//Contadores para responder incisos B y C	
 
+		for(i=0; i<4; i++)
+		{
+			if(i==0)
+					for(j=0; j<7; j++)
+					{
+						registro_sur[0]+=sur[i][j];
+						registro_norte[0]+=norte[i][j];
+					}
+			else
+			{
+				if(i==1)
+					for(j=0; j<7; j++)
+					{
+						registro_sur[1]+=sur[i][j];
+						registro_norte[1]+=norte[i][j];
+					}
+				else
+				{
+					if(i==2)
+						for(j=0; j<7; j++)
+						{
+							registro_sur[2]+=sur[i][j];
+							registro_norte[2]+=norte[i][j];
+						}
+					else
+					{
+						if(i==3)
+							for(j=0; j<7; j++)
+							{
+								registro_sur[3]+=sur[i][j];
+								registro_norte[3]+=norte[i][j];
+							}
+					}
+						
+				}
+			}
+		}
+	
+	comparador_sur=conta_sur;
+	
+	//Condicional para responder inciso B y C
+		for(k=0; k<4; k++)
+		{
+	
+			if(comparador_sur>registro_sur[k])
+			{
+				comparador_sur=registro_sur[k];
+				renglon_menor_registro_sur=k;
+			}
+			if(comparador_norte<registro_norte[k])
+			{
+				comparador_norte=registro_norte[k];
+				renglon_mayor_registro_norte=k;
+			}
+		}
+		//Impresion de los registros solicitados en los incisos B y C
+		//Inciso B
+		
+		printf("\n\n\tLa semana con menor lluvia en la Region Sur fue la semana %d con el siguiente registro:", renglon_menor_registro_sur+1);
+			for(i=renglon_menor_registro_sur; i<renglon_menor_registro_sur+1; i++)
+			{
+				for(j=0; j<7; j++)
+				{
+					if(j==0)
+						printf("\n\tLunes con %.2f mm de lluvia.", sur[i][j]);
+					else
+					{
+						if(j==1)
+							printf("\n\tMartes con %.2f mm de lluvia.", sur[i][j]);
+						else
+						{
+							if(j==2)
+								printf("\n\tMiercoles con %.2f mm de lluvia.", sur[i][j]);
+							else
+							{
+								if(j==3)
+									printf("\n\tJueves con %.2f mm de lluvia.", sur[i][j]);
+								else
+								{
+									if(j==4)
+										printf("\n\tViernes con %.2f mm de lluvia.", sur[i][j]);
+									else
+									{
+										if(j==5)
+											printf("\n\tSabado con %.2f mm de lluvia.", sur[i][j]);
+										else
+										{
+											printf("\n\tDomingo con %.2f mm de lluvia.", sur[i][j]);
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		
+		
+		//Inciso C
+		printf("\n\n\tLa semana con mayor lluvia en la Region Norte fue la semana %d con el siguiente registro:", renglon_mayor_registro_norte+1);
+				for(i=renglon_mayor_registro_norte; i<renglon_mayor_registro_norte+1; i++)
+				{
+					for(j=0; j<7; j++)
+					{
+						if(j==0)
+							printf("\n\tLunes con %.2f mm de lluvia.", norte[i][j]);
+						else
+						{
+							if(j==1)
+								printf("\n\tMartes con %.2f mm de lluvia.", norte[i][j]);
+							else
+								{
+									if(j==2)
+										printf("\n\tMiercoles con %.2f mm de lluvia.", norte[i][j]);
+									else
+									{
+										if(j==3)
+											printf("\n\tJueves con %.2f mm de lluvia.", norte[i][j]);
+										else
+										{
+											if(j==4)
+												printf("\n\tViernes con %.2f mm de lluvia.", norte[i][j]);
+											else
+											{
+												if(j==5)
+													printf("\n\tSabado con %.2f mm de lluvia.", norte[i][j]);
+												else
+												{
+													printf("\n\tDomingo con %.2f mm de lluvia.", norte[i][j]);
+												}
+											}
+										}
+									}
+								}
+						}
+					}
+				}
+	//Aqui se responde el inciso D
 
-//Contadores para responder incisos B y C
-    for(i=0; i<4; i++)
-      if(i==0)
-          for(j=0; j<7; j++)
-          {
-            semana1sur+=sur[i][j];
-            semana1norte+=norte[i][j];
-          }
-      else
-      {
-        if(i==1)
-          for(j=0; j<7; j++)
-          {
-            semana2sur+=sur[i][j];
-            semana2norte+=norte[i][j];
-          }
-        else
-        {
-          if(i==3)
-            for(j=0; j<7; j++)
-            {
-              semana3sur+=sur[i][j];
-              semana3norte+=norte[i][j];
-            }
-          else
-          {
-            for(j=0; j<7; j++)
-            {
-              semana4sur+=sur[i][j];
-              semana4norte+=norte[i][j];
-            }
-          }
-
-        }
-      }
-
-//Aqui empieza el codigo para responder el inciso B
-    if(semana1sur<semana2sur && semana1sur<semana3sur && semana1sur<semana4sur)
-    {
-      printf("\n\n\tLa semana con menor lluvia en la Region Sur fue la semana 1 con el siguiente registro:");
-        for(i=0; i<1; i++)
-          for(j=0; j<7; j++)
-          {
-            if(j==0)
-              printf("\n\tLunes con %.2f mm de lluvia.", sur[i][j]);
-            else
-            {
-              if(j==1)
-                printf("\n\tMartes con %.2f mm de lluvia.", sur[i][j]);
-              else
-                {
-                  if(j==2)
-                    printf("\n\tMiercoles con %.2f mm de lluvia.", sur[i][j]);
-                  else
-                  {
-                    if(j==3)
-                      printf("\n\tJueves con %.2f mm de lluvia.", sur[i][j]);
-                    else
-                    {
-                      if(j==4)
-                        printf("\n\tViernes con %.2f mm de lluvia.", sur[i][j]);
-                      else
-                      {
-                        if(j==5)
-                          printf("\n\tSabado con %.2f mm de lluvia.", sur[i][j]);
-                        else
-                        {
-                          printf("\n\tDomingo con %.2f mm de lluvia.", sur[i][j]);
-                        }
-                      }
-                    }
-                  }
-                }
-            }
-          }
-    }
-    else
-    {
-      if(semana2sur<semana1sur && semana2sur<semana3sur && semana2sur<semana4sur)
-      {
-        printf("\n\n\tLa semana con menor lluvia en la Region Sur fue la semana 2 con el siguiente registro:");
-          for(i=1; i<2; i++)
-            for(j=0; j<7; j++)
-            {
-              if(j==0)
-                printf("\n\tLunes con %.2f mm de lluvia.", sur[i][j]);
-              else
-              {
-                if(j==1)
-                  printf("\n\tMartes con %.2f mm de lluvia.", sur[i][j]);
-                else
-                  {
-                    if(j==2)
-                      printf("\n\tMiercoles con %.2f mm de lluvia.", sur[i][j]);
-                    else
-                      {
-                      if(j==3)
-                        printf("\n\tJueves con %.2f mm de lluvia.", sur[i][j]);
-                      else
-                      {
-                        if(j==4)
-                            printf("\n\tViernes con %.2f mm de lluvia.", sur[i][j]);
-                        else
-                        {
-                            if(j==5)
-                            printf("\n\tSabado con %.2f mm de lluvia.", sur[i][j]);
-                          else
-                          {
-                            printf("\n\tDomingo con %.2f mm de lluvia.", sur[i][j]);
-                          }
-                        }
-                      }
-                    }
-                  }
-              }
-            }
-      }
-      else
-      {
-        if(semana3sur<semana1sur && semana3sur<semana2sur && semana3sur<semana4sur)
-        {
-          printf("\n\n\tLa semana con menor lluvia en la Region Sur fue la semana 3 con el siguiente registro:");
-            for(i=2; i<3; i++)
-              for(j=0; j<7; j++)
-              {
-                if(j==0)
-                  printf("\n\tLunes con %.2f mm de lluvia.", sur[i][j]);
-                else
-                {
-                  if(j==1)
-                    printf("\n\tMartes con %.2f mm de lluvia.", sur[i][j]);
-                  else
-                    {
-                      if(j==2)
-                        printf("\n\tMiercoles con %.2f mm de lluvia.", sur[i][j]);
-                      else
-                      {
-                        if(j==3)
-                          printf("\n\tJueves con %.2f mm de lluvia.", sur[i][j]);
-                        else
-                        {
-                          if(j==4)
-                            printf("\n\tViernes con %.2f mm de lluvia.", sur[i][j]);
-                          else
-                          {
-                            if(j==5)
-                              printf("\n\tSabado con %.2f mm de lluvia.", sur[i][j]);
-                            else
-                            {
-                              printf("\n\tDomingo con %.2f mm de lluvia.", sur[i][j]);
-                            }
-                          }
-                        }
-                      }
-                    }
-                }
-              }
-        }
-        else
-        {
-          printf("\n\n\tLa semana con menor lluvia en la Region Sur fue la semana 4 con el siguiente registro:");
-            for(i=3; i<4; i++)
-              for(j=0; j<7; j++)
-              {
-                if(j==0)
-                  printf("\n\tLunes con %.2f mm de lluvia.", sur[i][j]);
-                else
-                {
-                  if(j==1)
-                    printf("\n\tMartes con %.2f mm de lluvia.", sur[i][j]);
-                  else
-                  {
-                    if(j==2)
-                      printf("\n\tMiercoles con %.2f mm de lluvia.", sur[i][j]);
-                    else
-                    {
-                      if(j==3)
-                        printf("\n\tJueves con %.2f mm de lluvia.", sur[i][j]);
-                      else
-                      {
-                        if(j==4)
-                          printf("\n\tViernes con %.2f mm de lluvia.", sur[i][j]);
-                        else
-                        {
-                          if(j==5)
-                            printf("\n\tSabado con %.2f mm de lluvia.", sur[i][j]);
-                          else
-                          {
-                            printf("\n\tDomingo con %.2f mm de lluvia.", sur[i][j]);
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-        }
-
-      }
-    }
-//Aqui empieza el codigo para responder el inciso C
-    if(semana1norte>semana2norte && semana1norte>semana3norte && semana1norte>semana4norte)
-    {
-      printf("\n\n\tLa semana con mayor lluvia en la Region Norte fue la semana 1 con el siguiente registro:");
-        for(i=0; i<1; i++)
-          for(j=0; j<7; j++)
-          {
-            if(j==0)
-              printf("\n\tLunes con %.2f mm de lluvia.", norte[i][j]);
-            else
-            {
-              if(j==1)
-                printf("\n\tMartes con %.2f mm de lluvia.", norte[i][j]);
-              else
-                {
-                  if(j==2)
-                    printf("\n\tMiercoles con %.2f mm de lluvia.", norte[i][j]);
-                  else
-                  {
-                    if(j==3)
-                      printf("\n\tJueves con %.2f mm de lluvia.", norte[i][j]);
-                    else
-                    {
-                      if(j==4)
-                        printf("\n\tViernes con %.2f mm de lluvia.", norte[i][j]);
-                      else
-                      {
-                        if(j==5)
-                          printf("\n\tSabado con %.2f mm de lluvia.", norte[i][j]);
-                        else
-                        {
-                          printf("\n\tDomingo con %.2f mm de lluvia.", norte[i][j]);
-                        }
-                      }
-                    }
-                  }
-                }
-            }
-          }
-    }
-    else
-    {
-      if(semana2norte>semana1norte && semana2norte>semana3norte && semana2norte>semana4norte)
-      {
-        printf("\n\n\tLa semana con mayor lluvia en la Region Norte fue la semana 2 con el siguiente registro:");
-          for(i=1; i<2; i++)
-            for(j=0; j<7; j++)
-            {
-              if(j==0)
-                printf("\n\tLunes con %.2f mm de lluvia.", norte[i][j]);
-              else
-              {
-                if(j==1)
-                  printf("\n\tMartes con %.2f mm de lluvia.", norte[i][j]);
-                else
-                  {
-                    if(j==2)
-                      printf("\n\tMiercoles con %.2f mm de lluvia.", norte[i][j]);
-                    else
-                      {
-                      if(j==3)
-                        printf("\n\tJueves con %.2f mm de lluvia.", norte[i][j]);
-                      else
-                      {
-                        if(j==4)
-                            printf("\n\tViernes con %.2f mm de lluvia.", norte[i][j]);
-                        else
-                        {
-                            if(j==5)
-                            printf("\n\tSabado con %.2f mm de lluvia.", norte[i][j]);
-                          else
-                          {
-                            printf("\n\tDomingo con %.2f mm de lluvia.", norte[i][j]);
-                          }
-                        }
-                      }
-                    }
-                  }
-              }
-            }
-      }
-      else
-      {
-        if(semana3norte>semana1norte && semana3norte>semana3norte && semana3norte>semana4norte)
-        {
-          printf("\n\n\tLa semana con mayor lluvia en la Region Norte fue la semana 3 con el siguiente registro:");
-            for(i=2; i<3; i++)
-              for(j=0; j<7; j++)
-              {
-                if(j==0)
-                  printf("\n\tLunes con %.2f mm de lluvia.", norte[i][j]);
-                else
-                {
-                  if(j==1)
-                    printf("\n\tMartes con %.2f mm de lluvia.", norte[i][j]);
-                  else
-                    {
-                      if(j==2)
-                        printf("\n\tMiercoles con %.2f mm de lluvia.", norte[i][j]);
-                      else
-                      {
-                        if(j==3)
-                          printf("\n\tJueves con %.2f mm de lluvia.", norte[i][j]);
-                        else
-                        {
-                          if(j==4)
-                            printf("\n\tViernes con %.2f mm de lluvia.", norte[i][j]);
-                          else
-                          {
-                            if(j==5)
-                              printf("\n\tSabado con %.2f mm de lluvia.", norte[i][j]);
-                            else
-                            {
-                              printf("\n\tDomingo con %.2f mm de lluvia.", norte[i][j]);
-                            }
-                          }
-                        }
-                      }
-                    }
-                }
-              }
-        }
-        else
-        {
-          printf("\n\n\tLa semana con mayor lluvia en la Region Norte fue la semana 4 con el siguiente registro:");
-            for(i=3; i<4; i++)
-              for(j=0; j<7; j++)
-              {
-                if(j==0)
-                  printf("\n\tLunes con %.2f mm de lluvia.", norte[i][j]);
-                else
-                {
-                  if(j==1)
-                    printf("\n\tMartes con %.2f mm de lluvia.", norte[i][j]);
-                  else
-                  {
-                    if(j==2)
-                      printf("\n\tMiercoles con %.2f mm de lluvia.", norte[i][j]);
-                    else
-                    {
-                      if(j==3)
-                        printf("\n\tJueves con %.2f mm de lluvia.", norte[i][j]);
-                      else
-                      {
-                        if(j==4)
-                          printf("\n\tViernes con %.2f mm de lluvia.", norte[i][j]);
-                        else
-                        {
-                          if(j==5)
-                            printf("\n\tSabado con %.2f mm de lluvia.", norte[i][j]);
-                          else
-                          {
-                            printf("\n\tDomingo con %.2f mm de lluvia.", norte[i][j]);
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-        }
-
-      }
- }
-//Aqui se responde el inciso D
-
-    if(conta_norte>conta_centro && conta_norte>conta_sur)
-        printf("\n\n\tLa region con mayor lluvia mensual fue la Region Norte.");
-      else
-        if(conta_centro>conta_norte && conta_centro>conta_sur)
-          printf("\n\n\tLa region con mayor lluvia mensual fue la Region Centro.");
-        else
-          printf("\n\n\tLa region con mayor lluvia mensual fue la Region Sur.");
+		if(conta_norte>conta_centro && conta_norte>conta_sur)
+				printf("\n\n\tLa region con mayor lluvia mensual fue la Region Norte.");
+			else
+				if(conta_centro>conta_norte && conta_centro>conta_sur)
+					printf("\n\n\tLa region con mayor lluvia mensual fue la Region Centro.");
+				else
+					printf("\n\n\tLa region con mayor lluvia mensual fue la Region Sur.");
 
 }
 
